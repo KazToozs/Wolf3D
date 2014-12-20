@@ -5,7 +5,7 @@
 ** Login   <toozs-_c@epitech.net>
 ** 
 ** Started on  Fri Dec 12 19:33:12 2014 cristopher toozs-hobson
-** Last update Sat Dec 20 15:24:14 2014 cristopher toozs-hobson
+** Last update Sat Dec 20 16:53:26 2014 cristopher toozs-hobson
 */
 
 #include <sys/types.h>
@@ -77,8 +77,8 @@ int		**put_in_table(t_pars *lines, t_play *p, int decount)
       while (n < decount)
 	{
 	  tab[i][n] = my_getnbr(my_str_to_wordtab(lines->line)[n]);
-	  p->pos_x = (tab[i][n] == 2) ? n : p->pos_x;
-	  p->pos_y = (tab[i][n] == 2) ? i : p->pos_y;
+	  p->pos_x = (tab[i][n] == 2) ? n + 1 : p->pos_x;
+	  p->pos_y = (tab[i][n] == 2) ? i + 1 : p->pos_y;
 	  n++;
 	}
       tab[i][n] = '\0';

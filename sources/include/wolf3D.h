@@ -5,7 +5,7 @@
 ** Login   <toozs-_c@epitech.net>
 ** 
 ** Started on  Thu Dec 11 09:39:36 2014 cristopher toozs-hobson
-** Last update Sat Dec 20 15:02:34 2014 cristopher toozs-hobson
+** Last update Sat Dec 20 17:41:23 2014 cristopher toozs-hobson
 */
 
 #ifndef WOLF_H_
@@ -51,8 +51,8 @@ typedef struct	s_pars
 
 typedef struct	s_play
 {
-  int		pos_x;
-  int		pos_y;
+  double	pos_x;
+  double	pos_y;
   double	d;
   double	p;
   double	x1;
@@ -74,7 +74,7 @@ typedef struct	s_strct
 
 int             initialize_structs(t_strct *strct, char **av);
 void            colormap(t_data *d, t_pic *p);
-void            put_pixel_to_image(int pos_x, int pos_y, t_data *d);
+void            put_pixel_to_image(int pos_x, int pos_y, t_data *d, t_pic p);
 void            display_rectangle(t_rect r, t_data *d);
 int             manage_expose(void *param);
 int             manage_key(int  keycode, void *param);

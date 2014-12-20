@@ -5,7 +5,7 @@
 ** Login   <toozs-_c@epitech.net>
 ** 
 ** Started on  Thu Dec 11 10:29:51 2014 cristopher toozs-hobson
-** Last update Sat Dec 20 15:16:20 2014 cristopher toozs-hobson
+** Last update Sat Dec 20 17:40:23 2014 cristopher toozs-hobson
 */
 
 #include "mlx.h"
@@ -21,7 +21,7 @@ int		my_put_sky(int x, t_strct *s, int wallheight)
   s->d.blue = 0;
   while (y < wallheight)
     {
-      put_pixel_to_image(x, y, &s->d);
+      put_pixel_to_image(x, y, &s->d, s->pic);
       y++;
     }
   return (y);
@@ -34,7 +34,7 @@ int		my_put_wall(int x, t_strct *s, int low, int y)
   s->d.blue = 96;
   while (y < low)
     {
-      put_pixel_to_image(x, y, &s->d);
+      put_pixel_to_image(x, y, &s->d, s->pic);
       y++;
     }
   return (y);
@@ -47,7 +47,7 @@ int		my_put_floor(int x, t_strct *s, int y)
   s->d.blue = 30;
   while (y < s->pic.img_y)
     {
-      put_pixel_to_image(x, y, &s->d);
+      put_pixel_to_image(x, y, &s->d, s->pic);
       y++;
     }
   return (y);

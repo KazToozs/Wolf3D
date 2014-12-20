@@ -5,7 +5,7 @@
 ** Login   <toozs-_c@epitech.net>
 ** 
 ** Started on  Wed Dec 10 17:51:02 2014 cristopher toozs-hobson
-** Last update Sat Dec 20 15:14:14 2014 cristopher toozs-hobson
+** Last update Sat Dec 20 21:06:57 2014 cristopher toozs-hobson
 */
 
 #include <stdlib.h>
@@ -22,7 +22,8 @@ int		initialize_structs(t_strct *strct, char **av)
   p = &strct->pic;
   p->win_x = 800;
   p->win_y = 600;
-  d->mlx_pt = mlx_init();
+  if ((d->mlx_pt = mlx_init()) == NULL)
+    return (1);
   d->img_pt = mlx_new_image(d->mlx_pt, p->win_x, p->win_y);
   d->data = mlx_get_data_addr(d->img_pt, &d->bpp, &d->line, &d->endian);
   d->win_pt = mlx_new_window(d->mlx_pt, p->win_x, p->win_y, "3D");
@@ -34,12 +35,12 @@ int		initialize_structs(t_strct *strct, char **av)
   return (0);
 }
 
-int		manage_events(t_strct strct)
+int		manage_events(t_strct *strct)
 {
   t_data	*d;
 
-  d = &strct.d;
-  mlx_key_hook(d->win_pt, &manage_key, (void *)(d));
+  d = &strct->d;
+  mlx_key_hook(d->win_pt, &manage_key, (void *)(strct));
   mlx_mouse_hook(d->win_pt, &manage_mouse, (void *)(d));
   mlx_expose_hook(d->win_pt, &manage_expose, (void *)(d));
   return (0);
@@ -51,11 +52,12 @@ int		main(int ac, char **av)
 
   if (ac > 1)
     {
-      initialize_structs(&s, av);
+      if (initialize_structs(&s, av) == 1)
+	  return (1);
       s.pl.tab = make_tab(&s);
       draw_walls(&s, s.pl.tab);
       mlx_put_image_to_window(s.d.mlx_pt, s.d.win_pt, s.d.img_pt, 0, 0);
-      manage_events(s);
+      manage_events(&s);
       mlx_loop(s.d.mlx_pt);
     }
   else

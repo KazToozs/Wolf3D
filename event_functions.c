@@ -5,7 +5,7 @@
 ** Login   <toozs-_c@epitech.net>
 ** 
 ** Started on  Thu Dec 11 10:10:27 2014 cristopher toozs-hobson
-** Last update Sat Dec 20 15:51:21 2014 cristopher toozs-hobson
+** Last update Sat Dec 20 17:40:45 2014 cristopher toozs-hobson
 */
 
 #include <stdlib.h>
@@ -24,14 +24,21 @@ int             manage_expose(void *param)
 
 int             manage_key(int  keycode, void *param)
 {
-  t_data        *d;
+  t_strct        *s;
 
-  d = (t_data *)(param);
+  s = (t_strct *)(param);
   my_put_nbr(keycode);
   my_putchar('\n');
+  if (keycode == 113)
+    move_left(s);
+  if (keycode == 122)
+    move_up(s);
+  if (keycode == 100)
+    move_right(s);
+  if (keycode == 115)
+    move_down(s);
   if (keycode == 65307)
     exit(0);
-  mlx_put_image_to_window(d->mlx_pt, d->win_pt, d->img_pt, 0, 0);
   return (0);
 }
 

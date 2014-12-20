@@ -5,7 +5,7 @@
 ** Login   <toozs-_c@epitech.net>
 ** 
 ** Started on  Wed Dec 17 11:22:06 2014 cristopher toozs-hobson
-** Last update Sat Dec 20 15:15:46 2014 cristopher toozs-hobson
+** Last update Sat Dec 20 21:07:27 2014 cristopher toozs-hobson
 */
 
 #include <math.h>
@@ -36,11 +36,11 @@ double		set_values(t_strct *s, int x, int **tab)
   k = s->pl.d;
   xi = (double)(s->pl.pos_x) + (k * s->pl.x1);
   yi = (double)(s->pl.pos_y) + (k * s->pl.y1);
-  while (tab[(int)xi][(int)yi] != 1)
+  while (tab[(int)(xi)][(int)(yi)] != 1)
     {
       k = k + 0.001;
-      xi = (double)(s->pl.pos_x) + (k * s->pl.xp);
-      yi = (double)(s->pl.pos_y) + (k * s->pl.yp);
+      xi = (s->pl.pos_x) + (k * s->pl.xp);
+      yi = (s->pl.pos_y) + (k * s->pl.yp);
     }
   return (((double)(s->pic.img_y)) / (2 * k));
 }

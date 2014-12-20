@@ -5,19 +5,23 @@
 ** Login   <toozs-_c@epitech.net>
 ** 
 ** Started on  Wed Dec 10 18:11:57 2014 cristopher toozs-hobson
-** Last update Thu Dec 18 14:09:45 2014 cristopher toozs-hobson
+** Last update Sat Dec 20 19:05:18 2014 cristopher toozs-hobson
 */
 
 #include <stdlib.h>
 #include "mlx.h"
 #include "./sources/include/wolf3D.h"
 
-void		put_pixel_to_image(int pos_x, int pos_y, t_data *d)
+void		put_pixel_to_image(int pos_x, int pos_y, t_data *d, t_pic p)
 {
   int           x;
   int           y;
   int           tab;
 
+  if (pos_x <= 0 || pos_x >= p.win_x)
+    return ;
+  if (pos_y <= 0 || pos_y >= p.win_y)
+    return ;
   x = pos_x * (d->bpp / 8);
   y = pos_y * ((d->bpp / 8) * (d->line / 4));
   tab = x + y;
