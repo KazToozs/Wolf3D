@@ -5,7 +5,7 @@
 ** Login   <toozs-_c@epitech.net>
 ** 
 ** Started on  Thu Dec 11 09:39:36 2014 cristopher toozs-hobson
-** Last update Thu Dec 18 19:01:31 2014 cristopher toozs-hobson
+** Last update Sat Dec 20 15:02:34 2014 cristopher toozs-hobson
 */
 
 #ifndef WOLF_H_
@@ -39,8 +39,8 @@ typedef struct	s_pic
   int		win_y;
   int		img_start_x;
   int		img_start_y;
-  int		img_size_x;
-  int		img_size_y;
+  int		img_x;
+  int		img_y;
 }		t_pic;
 
 typedef struct	s_pars
@@ -51,19 +51,21 @@ typedef struct	s_pars
 
 typedef struct	s_play
 {
-  double	pos_x;
-  double	pos_y;
+  int		pos_x;
+  int		pos_y;
   double	d;
   double	p;
-  double	vect_x;
-  double	vect_y;
-  double	proj_x;
-  double	proj_y;
+  double	x1;
+  double	y1;
+  double	xp;
+  double	yp;
+  double      	a;
+  int		**tab;
 }		t_play;
 
 typedef struct	s_strct
 {
-  t_play	play;
+  t_play	pl;
   t_data	d;
   t_pic		pic;
   t_rect	rect;
@@ -85,5 +87,9 @@ int             list_count(t_pars *list);
 int             num_count(char **wordtab);
 t_pars          *my_put_in_list(t_pars *chain, char *data);
 double          set_values(t_strct *strct, int x, int **tab);
+void		move_left(t_strct *s);
+void		move_right(t_strct *s);
+void		move_up(t_strct *s);
+void		move_down(t_strct *s);
 
 #endif

@@ -5,7 +5,7 @@
 ** Login   <toozs-_c@epitech.net>
 ** 
 ** Started on  Fri Dec 12 19:33:12 2014 cristopher toozs-hobson
-** Last update Thu Dec 18 13:47:59 2014 cristopher toozs-hobson
+** Last update Sat Dec 20 15:24:14 2014 cristopher toozs-hobson
 */
 
 #include <sys/types.h>
@@ -36,20 +36,6 @@ t_pars		*my_put_in_list(t_pars *chain, char *data)
   return (tmp);
 }
 
-// only for tests
-void		my_show_list(t_pars *list)
-{
-  t_pars	*tmp;
-
-  tmp = list;
-  while (tmp != NULL)
-    {
-      my_putstr(tmp->line);
-      my_putchar('\n');
-      tmp = tmp->next;
-    }
-}
-
 int		list_count(t_pars *list)
 {
   int		i;
@@ -62,16 +48,6 @@ int		list_count(t_pars *list)
       i++;
       tmp = tmp->next;
     }
-  return (i);
-}
-
-int		num_count(char **wordtab)
-{
-  int		i;
-
-  i = 0;
-  while (wordtab[i] != NULL)
-      i++;
   return (i);
 }
 
@@ -114,28 +90,6 @@ int		**put_in_table(t_pars *lines, t_play *p, int decount)
   return (tab);
 }
 
-//only for tests
-void		show_table(int **tab, int k)
-{
-  int		n;
-  int		i;
-
-  i = 0;
-  n = 0;
-  while (tab[n] != NULL)
-    {
-      while (i < k)
-	{
-	  my_put_nbr(tab[n][i]);
-	  my_putchar (' ');
-	  i++;
-	}
-      i = 0;
-      my_putchar('\n');
-      n++;
-    }
-}
-
 int		**make_tab(t_strct *strct)
 {
   int		**tab;
@@ -143,9 +97,11 @@ int		**make_tab(t_strct *strct)
   int		n;
   t_play	*play;
 
-  play = &strct->play;
+  play = &strct->pl;
   list_maker(open(strct->arg[1], O_RDONLY), &lines);
-  n = num_count(my_str_to_wordtab(lines->line));
+  n = 0;
+  while (my_str_to_wordtab(lines->line)[n] != NULL)
+    n++;
   tab = put_in_table(lines, play, n);
   return (tab);
 }

@@ -5,7 +5,7 @@
 ## Login   <toozs-_c@epitech.net>
 ## 
 ## Started on  Wed Oct 29 15:09:44 2014 cristopher toozs-hobson
-## Last update Wed Dec 17 22:35:02 2014 cristopher toozs-hobson
+## Last update Sat Dec 20 15:49:21 2014 cristopher toozs-hobson
 ##
 
 SRC	=	main.c \
@@ -13,7 +13,7 @@ SRC	=	main.c \
 		image_functions.c \
 		event_functions.c \
 		math_functions.c \
-		parsing_functions.c 
+		parsing_functions.c
 
 NAME	=	wolf3D
 

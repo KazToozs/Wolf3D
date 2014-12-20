@@ -5,71 +5,79 @@
 ** Login   <toozs-_c@epitech.net>
 ** 
 ** Started on  Thu Dec 11 10:29:51 2014 cristopher toozs-hobson
-** Last update Thu Dec 18 19:01:17 2014 cristopher toozs-hobson
+** Last update Sat Dec 20 15:16:20 2014 cristopher toozs-hobson
 */
 
 #include "mlx.h"
 #include "./sources/include/wolf3D.h"
 
-void            display_rectangle(t_rect r, t_data *d)
+int		my_put_sky(int x, t_strct *s, int wallheight)
 {
-  int   x;
-  int   y;
+  int		y;
 
-  x = r.start_x;
-  y = r.start_y;
-  while (y < (r.size_y + r.start_y))
+  y = 0;
+  s->d.red = 255;
+  s->d.green = 75;
+  s->d.blue = 0;
+  while (y < wallheight)
     {
-      while (x < (r.size_x + r.start_x))
-        {
-          put_pixel_to_image(x, y, d);
-          x++;
-        }
+      put_pixel_to_image(x, y, &s->d);
       y++;
-      x = r.start_x;
     }
+  return (y);
 }
 
-void            colormap(t_data *d, t_pic *p)
+int		my_put_wall(int x, t_strct *s, int low, int y)
 {
-  t_rect        r;
+  s->d.red = 96;
+  s->d.green = 96;
+  s->d.blue = 96;
+  while (y < low)
+    {
+      put_pixel_to_image(x, y, &s->d);
+      y++;
+    }
+  return (y);
+}
 
-  r.start_x = p->img_start_x;
-  r.start_y = p->img_start_y;
-  r.size_x = p->img_size_x;
-  r.size_y = p->img_size_y / 2;
-  display_rectangle(r, d);
-  r.start_x = p->img_start_x;
-  r.start_y = p->img_size_y /2;
-  d->blue = 30;
-  d->green = 75;
-  d->red = 110;
-  display_rectangle(r, d);
+int		my_put_floor(int x, t_strct *s, int y)
+{
+  s->d.red = 110;
+  s->d.green = 75;
+  s->d.blue = 30;
+  while (y < s->pic.img_y)
+    {
+      put_pixel_to_image(x, y, &s->d);
+      y++;
+    }
+  return (y);
+}
+
+void		draw_column(int x, t_strct *strct, int height, int low)
+{
+  int		y;
+
+  y = my_put_sky(x, strct, height);
+  y = my_put_wall(x, strct, low, y);
+  my_put_floor(x, strct, y);
 }
 
 void		draw_walls(t_strct *strct, int **tab)
 {
   int		column;
   double	half_wall;
-  int		y;
+  int		w;
   int		n;
   int		i;
 
-  strct->d.blue = 96;
-  strct->d.green = 96;
-  strct->d.red = 96;
   column = 0;
-  y = strct->pic.img_size_y / 2;
-  while (column < strct->pic.img_size_x)
+  w = strct->pic.img_y / 2;
+  while (column < strct->pic.img_x)
     {
       half_wall = set_values(strct, column, tab);
-      n = (y + (int)half_wall);
-      i = (y - (int)half_wall);
-      while (n > i)
-	{
-	  put_pixel_to_image(column, n, &strct->d);
-	  n--;
-	}
+      n = (w + (int)half_wall);
+      i = (w - (int)half_wall);
+      draw_column(column, strct, i, n);
       column++;
     }
 }

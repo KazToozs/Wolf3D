@@ -5,62 +5,42 @@
 ** Login   <toozs-_c@epitech.net>
 ** 
 ** Started on  Wed Dec 17 11:22:06 2014 cristopher toozs-hobson
-** Last update Thu Dec 18 22:49:54 2014 cristopher toozs-hobson
+** Last update Sat Dec 20 15:15:46 2014 cristopher toozs-hobson
 */
 
 #include <math.h>
 #include "./sources/include/wolf3D.h"
 
-// may be unessecary
-/* double		calculate_angle(t_pic pic, t_play play, int x) */
-/* { */
-/*   double	pow_d; */
-/*   double	pow_y; */
-/*   double	adj; */
-/*   double	hypo; */
-
-/*   pow_d = pow(play.d, 2); */
-/*   pow_y = pow(((pic.img_size_x - x) / pic.img_size_x), 2); */
-/*   hypo = sqrt(pow_y + (play.p * pow_y)); */
-/*   adj = play.d; */
-/*   return (acos(adj/hypo)); */
-/* } */
-
-void		calculate_vector(t_play *play, t_pic pic, int x)
+void		calculate_primes(t_play *pl)
 {
-  play->proj_x = play->d + play->pos_x;  
-  play->proj_y = play->p * ((((double)(pic.img_size_x) / 2) - (double)(x)) / (double)(pic.img_size_x)) + play->pos_y;
-  play->vect_x = sqrt(pow(play->proj_x - play->pos_x, 2));
-  play->vect_y = sqrt(pow(play->proj_y - play->pos_y, 2));
+  double	ang;
+
+  pl->a = 90;
+  ang = pl->a * M_PI / 180;
+  pl->xp = (pl->x1 * cos(ang)) - (pl->y1 * sin(ang));
+  pl->yp = (pl->x1 * sin(ang)) + (pl->y1 * cos(ang));
 }
 
-double		set_values(t_strct *strct, int x, int **tab)
+double		set_values(t_strct *s, int x, int **tab)
 {
-  t_pic		pic;
-  t_play	*play;
-  /* int		xi; */
-  /* int		yi; */
   double	xi;
   double	yi;
   double	k;
 
-  play = &strct->play;
-  pic = strct->pic;
-  play->d = 0.5;
-  play->p = 1;
-  calculate_vector(play, pic, x);
-  /* xi = (int)(play.pos_x + play.vect_x); */
-  /* yi = (int)(play.pos_y + play.vect_y); */
-  xi = (play->pos_x + play->vect_x);
-  yi = (play->pos_y + play->vect_y);
-  k = 1;
+  s->pl.d = 0.5;
+  s->pl.p = 1;
+  s->pl.x1 = s->pl.d;
+  s->pl.y1 = s->pl.p * (((((double)(s->pic.img_x) / 2) - (double)(x))
+			 / (double)(s->pic.img_x)));
+  calculate_primes(&s->pl);
+  k = s->pl.d;
+  xi = (double)(s->pl.pos_x) + (k * s->pl.x1);
+  yi = (double)(s->pl.pos_y) + (k * s->pl.y1);
   while (tab[(int)xi][(int)yi] != 1)
     {
-      k = k + 0.1;
-      xi = (double)(play->pos_x) + (k * play->vect_x);
-      yi = (double)(play->pos_y) + (k * play->vect_y);
+      k = k + 0.001;
+      xi = (double)(s->pl.pos_x) + (k * s->pl.xp);
+      yi = (double)(s->pl.pos_y) + (k * s->pl.yp);
     }
-  /* printf("%f", k); */
-  return ((double)(pic.img_size_y) / (2 * k));
+  return (((double)(s->pic.img_y)) / (2 * k));
 }
-
