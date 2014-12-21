@@ -5,7 +5,7 @@
 ** Login   <toozs-_c@epitech.net>
 ** 
 ** Started on  Wed Dec 17 11:22:06 2014 cristopher toozs-hobson
-** Last update Sun Dec 21 13:00:16 2014 cristopher toozs-hobson
+** Last update Sun Dec 21 19:00:53 2014 cristopher toozs-hobson
 */
 
 #include <math.h>
@@ -15,7 +15,6 @@ void		calculate_primes(t_play *pl)
 {
   double	ang;
 
-  pl->a = 90.0;
   ang = pl->a * M_PI / 180.0;
   pl->xp = (pl->x1 * cos(ang)) - (pl->y1 * sin(ang));
   pl->yp = (pl->x1 * sin(ang)) + (pl->y1 * cos(ang));

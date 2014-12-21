@@ -5,7 +5,7 @@
 ** Login   <toozs-_c@epitech.net>
 ** 
 ** Started on  Thu Dec 11 09:39:36 2014 cristopher toozs-hobson
-** Last update Sat Dec 20 17:41:23 2014 cristopher toozs-hobson
+** Last update Sun Dec 21 19:02:51 2014 cristopher toozs-hobson
 */
 
 #ifndef WOLF_H_
@@ -73,23 +73,21 @@ typedef struct	s_strct
 }		t_strct;
 
 int             initialize_structs(t_strct *strct, char **av);
-void            colormap(t_data *d, t_pic *p);
 void            put_pixel_to_image(int pos_x, int pos_y, t_data *d, t_pic p);
-void            display_rectangle(t_rect r, t_data *d);
 int             manage_expose(void *param);
 int             manage_key(int  keycode, void *param);
-int             manage_mouse(int button, int x, int y, void *param);
+int             manage_mouse(void *param);
 void            draw_walls(t_strct *strct, int **tab);
-int             **make_tab(t_strct *strct);
-int             list_maker(int fd, t_pars **lines);
-int             **put_in_table(t_pars *lines, t_play *p, int decount);
-int             list_count(t_pars *list);
-int             num_count(char **wordtab);
-t_pars          *my_put_in_list(t_pars *chain, char *data);
 double          set_values(t_strct *strct, int x, int **tab);
 void		move_left(t_strct *s);
 void		move_right(t_strct *s);
 void		move_up(t_strct *s);
 void		move_down(t_strct *s);
+void		turn_left(t_strct *s);
+void		turn_right(t_strct *s);
+int             **static_one(t_strct *s);
+int             **static_two(t_strct *s);
+int             **static_three(t_strct *s);
+int             **create_map(int x_max, int y_max, int map);
 
 #endif

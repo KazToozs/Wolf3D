@@ -5,19 +5,24 @@
 ** Login   <toozs-_c@epitech.net>
 ** 
 ** Started on  Sat Dec 20 14:56:55 2014 cristopher toozs-hobson
-** Last update Sun Dec 21 13:01:11 2014 cristopher toozs-hobson
+** Last update Sun Dec 21 19:04:01 2014 cristopher toozs-hobson
 */
 
+#include <math.h>
 #include "mlx.h"
 #include "./sources/include/wolf3D.h"
 #include "./sources/include/my.h"
 
 void		move_left(t_strct *s)
 {
-  if (s->pl.tab[(int)(s->pl.pos_x - 0.11)][(int)(s->pl.pos_y + 0.01)] != 1
-      && s->pl.tab[(int)(s->pl.pos_x - 0.11)][(int)(s->pl.pos_y - 0.01)] != 1)
+  double        ang;
+
+  ang = s->pl.a * M_PI / 180.0;
+  if (s->pl.tab[(int)(s->pl.pos_x + (cos(ang + (M_PI / 2)) / 30))]
+      [(int)(s->pl.pos_y + (sin(ang + (M_PI / 2)) / 30))] != 1)
     {
-      s->pl.pos_x -= 0.1;
+      s->pl.pos_x += cos(ang + (M_PI / 2)) / 30;
+      s->pl.pos_y += sin(ang + (M_PI / 2)) / 30;
       draw_walls(s, s->pl.tab);
     }
   mlx_put_image_to_window(s->d.mlx_pt, s->d.win_pt, s->d.img_pt, 0, 0);
@@ -25,10 +30,14 @@ void		move_left(t_strct *s)
 
 void		move_up(t_strct *s)
 {
-  if (s->pl.tab[(int)(s->pl.pos_x + 0.01)][(int)(s->pl.pos_y + 0.11)] != 1
-      && s->pl.tab[(int)(s->pl.pos_x - 0.01)][(int)(s->pl.pos_y + 0.11)] != 1)
+  double        ang;
+
+  ang = s->pl.a * M_PI / 180.0;
+  if (s->pl.tab[(int)(s->pl.pos_x + cos(ang) / 30)]
+      [(int)(s->pl.pos_y + sin(ang) / 30)] != 1)
     {
-      s->pl.pos_y += 0.1;
+      s->pl.pos_x += cos(ang) / 30;
+      s->pl.pos_y += sin(ang) / 30;
       draw_walls(s, s->pl.tab);
     }
   mlx_put_image_to_window(s->d.mlx_pt, s->d.win_pt, s->d.img_pt, 0, 0);
@@ -36,10 +45,14 @@ void		move_up(t_strct *s)
 
 void		move_right(t_strct *s)
 {
-  if (s->pl.tab[(int)(s->pl.pos_x + 0.11)][(int)(s->pl.pos_y + 0.01)] != 1
-      && s->pl.tab[(int)(s->pl.pos_x + 0.11)][(int)(s->pl.pos_y - 0.01)] != 1)
+  double        ang;
+
+  ang = s->pl.a * M_PI / 180.0;
+  if (s->pl.tab[(int)(s->pl.pos_x + (cos(ang - (M_PI / 2)) / 30))]
+      [(int)(s->pl.pos_y + (sin(ang - (M_PI / 2)) / 30))] != 1)
     {
-      s->pl.pos_x += 0.1;
+      s->pl.pos_x += cos(ang - (M_PI / 2)) / 30;
+      s->pl.pos_y += sin(ang - (M_PI / 2)) / 30;
       draw_walls(s, s->pl.tab);
     }
   mlx_put_image_to_window(s->d.mlx_pt, s->d.win_pt, s->d.img_pt, 0, 0);
@@ -47,10 +60,14 @@ void		move_right(t_strct *s)
 
 void		move_down(t_strct *s)
 {
-  if (s->pl.tab[(int)(s->pl.pos_x + 0.01)][(int)(s->pl.pos_y - 0.11)] != 1
-      && s->pl.tab[(int)(s->pl.pos_x - 0.01)][(int)(s->pl.pos_y - 0.11)] != 1)
+  double        ang;
+
+  ang = s->pl.a * M_PI / 180.0;
+  if (s->pl.tab[(int)(s->pl.pos_x - cos(ang) / 30)]
+      [(int)(s->pl.pos_y - sin(ang) / 30)] != 1)
     {
-      s->pl.pos_y -= 0.1;
+      s->pl.pos_x -= cos(ang) / 30;
+      s->pl.pos_y -= sin(ang) / 30;
       draw_walls(s, s->pl.tab);
     }
   mlx_put_image_to_window(s->d.mlx_pt, s->d.win_pt, s->d.img_pt, 0, 0);

@@ -5,7 +5,7 @@
 ** Login   <toozs-_c@epitech.net>
 ** 
 ** Started on  Thu Dec 11 10:10:27 2014 cristopher toozs-hobson
-** Last update Sun Dec 21 13:03:08 2014 cristopher toozs-hobson
+** Last update Sun Dec 21 19:09:40 2014 cristopher toozs-hobson
 */
 
 #include <stdlib.h>
@@ -27,33 +27,28 @@ int             manage_key(int  keycode, void *param)
   t_strct        *s;
 
   s = (t_strct *)(param);
-  if (keycode == 113)
+  if (keycode == 65361)
     move_left(s);
-  if (keycode == 122)
+  if (keycode == 65362)
     move_up(s);
-  if (keycode == 100)
+  if (keycode == 65363)
     move_right(s);
-  if (keycode == 115)
+  if (keycode == 65364)
     move_down(s);
+  if (keycode == 100)
+    turn_left(s);
+  if (keycode == 113)
+    turn_right(s);
   if (keycode == 65307)
     exit(0);
   return (0);
 }
 
-int             manage_mouse(int button, int x, int y, void *param)
+int             manage_mouse(void *param)
 {
   t_data        *d;
 
   d = (t_data *)(param);
-  my_putstr("x: ");
-  my_put_nbr(x);
-  my_putchar('\n');
-  my_putstr("y: ");
-  my_put_nbr(y);
-  my_putchar('\n');
-  my_putstr("bouton: ");
-  my_put_nbr(button);
-  my_putchar('\n');
   mlx_put_image_to_window(d->mlx_pt, d->win_pt, d->img_pt, 0, 0);
   return (0);
 }
