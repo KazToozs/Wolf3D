@@ -5,7 +5,7 @@
 ** Login   <toozs-_c@epitech.net>
 ** 
 ** Started on  Thu Dec 11 10:10:27 2014 cristopher toozs-hobson
-** Last update Sun Dec 21 19:09:40 2014 cristopher toozs-hobson
+** Last update Sun Dec 21 20:09:31 2014 cristopher toozs-hobson
 */
 
 #include <stdlib.h>
@@ -29,19 +29,21 @@ int             manage_key(int  keycode, void *param)
   s = (t_strct *)(param);
   if (keycode == 65361)
     move_left(s);
-  if (keycode == 65362)
+  else if (keycode == 65362)
     move_up(s);
-  if (keycode == 65363)
+  else if (keycode == 65363)
     move_right(s);
-  if (keycode == 65364)
+  else if (keycode == 65364)
     move_down(s);
-  if (keycode == 100)
+  else if (keycode == 100)
     turn_left(s);
-  if (keycode == 113)
+  else if (keycode == 113)
     turn_right(s);
-  if (keycode == 65307)
+  else if (keycode == 65307)
     exit(0);
-  return (0);
+  else
+    return (0);
+  return (1);
 }
 
 int             manage_mouse(void *param)
