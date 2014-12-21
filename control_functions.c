@@ -5,7 +5,7 @@
 ** Login   <toozs-_c@epitech.net>
 ** 
 ** Started on  Sat Dec 20 14:56:55 2014 cristopher toozs-hobson
-** Last update Sat Dec 20 21:04:42 2014 cristopher toozs-hobson
+** Last update Sun Dec 21 13:01:11 2014 cristopher toozs-hobson
 */
 
 #include "mlx.h"
@@ -14,7 +14,8 @@
 
 void		move_left(t_strct *s)
 {
-  if (s->pl.tab[(int)(s->pl.pos_x - 0.1)][(int)(s->pl.pos_y)] != 1)
+  if (s->pl.tab[(int)(s->pl.pos_x - 0.11)][(int)(s->pl.pos_y + 0.01)] != 1
+      && s->pl.tab[(int)(s->pl.pos_x - 0.11)][(int)(s->pl.pos_y - 0.01)] != 1)
     {
       s->pl.pos_x -= 0.1;
       draw_walls(s, s->pl.tab);
@@ -24,7 +25,8 @@ void		move_left(t_strct *s)
 
 void		move_up(t_strct *s)
 {
-  if (s->pl.tab[(int)(s->pl.pos_x)][(int)(s->pl.pos_y + 0.2)] != 1)
+  if (s->pl.tab[(int)(s->pl.pos_x + 0.01)][(int)(s->pl.pos_y + 0.11)] != 1
+      && s->pl.tab[(int)(s->pl.pos_x - 0.01)][(int)(s->pl.pos_y + 0.11)] != 1)
     {
       s->pl.pos_y += 0.1;
       draw_walls(s, s->pl.tab);
@@ -34,7 +36,8 @@ void		move_up(t_strct *s)
 
 void		move_right(t_strct *s)
 {
-  if (s->pl.tab[(int)(s->pl.pos_x + 0.2)][(int)(s->pl.pos_y)] != 1)
+  if (s->pl.tab[(int)(s->pl.pos_x + 0.11)][(int)(s->pl.pos_y + 0.01)] != 1
+      && s->pl.tab[(int)(s->pl.pos_x + 0.11)][(int)(s->pl.pos_y - 0.01)] != 1)
     {
       s->pl.pos_x += 0.1;
       draw_walls(s, s->pl.tab);
@@ -44,7 +47,8 @@ void		move_right(t_strct *s)
 
 void		move_down(t_strct *s)
 {
-  if (s->pl.tab[(int)(s->pl.pos_x)][(int)(s->pl.pos_y - 0.1)] != 1)
+  if (s->pl.tab[(int)(s->pl.pos_x + 0.01)][(int)(s->pl.pos_y - 0.11)] != 1
+      && s->pl.tab[(int)(s->pl.pos_x - 0.01)][(int)(s->pl.pos_y - 0.11)] != 1)
     {
       s->pl.pos_y -= 0.1;
       draw_walls(s, s->pl.tab);

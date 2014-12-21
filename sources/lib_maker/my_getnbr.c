@@ -5,7 +5,7 @@
 ** Login   <toozs-_c@epitech.net>
 ** 
 ** Started on  Tue Oct  7 12:08:42 2014 cristopher toozs-hobson
-** Last update Mon Oct 20 19:51:22 2014 cristopher toozs-hobson
+** Last update Sun Dec 21 12:55:08 2014 cristopher toozs-hobson
 */
 
 int     get_number(char *str, int i, int neg)
@@ -47,6 +47,3 @@ int     my_getnbr(char *str)
     }
   return (0);
 }
-
-
-

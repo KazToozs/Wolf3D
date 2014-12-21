@@ -5,7 +5,7 @@
 ** Login   <toozs-_c@epitech.net>
 ** 
 ** Started on  Thu Dec 11 10:10:27 2014 cristopher toozs-hobson
-** Last update Sat Dec 20 17:40:45 2014 cristopher toozs-hobson
+** Last update Sun Dec 21 13:03:08 2014 cristopher toozs-hobson
 */
 
 #include <stdlib.h>
@@ -27,8 +27,6 @@ int             manage_key(int  keycode, void *param)
   t_strct        *s;
 
   s = (t_strct *)(param);
-  my_put_nbr(keycode);
-  my_putchar('\n');
   if (keycode == 113)
     move_left(s);
   if (keycode == 122)

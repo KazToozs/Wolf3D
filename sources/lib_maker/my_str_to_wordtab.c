@@ -5,7 +5,7 @@
 ** Login   <toozs-_c@epitech.net>
 ** 
 ** Started on  Mon Nov  3 10:09:14 2014 cristopher toozs-hobson
-** Last update Thu Dec 18 10:36:50 2014 cristopher toozs-hobson
+** Last update Sun Dec 21 12:55:51 2014 cristopher toozs-hobson
 */
 
 #include <stdlib.h>
@@ -21,7 +21,7 @@ int	count_words(char *str)
   while (str[i] != '\0')
     {
       if  ((str[i] >= 'a' && str[i] <= 'z') || (str[i] >= 'A' && str[i] <= 'Z')
-	   || (str[i] >= '0' && str[i] <= '9'))     
+	   || (str[i] >= '0' && str[i] <= '9'))
 	{
 	  cpt++;
 	  while (str[i] && ((str[i] >= 'a' && str[i] <= 'z')
@@ -37,7 +37,7 @@ int	count_words(char *str)
 int	count_chars(char *str, int *i)
 {
   int	cpt;
-  
+
   cpt = 0;
   while (str[*i] && ((str[*i] >= 'a' && str[*i] <= 'z')
 		     || (str[*i] >= 'A' && str[*i] <= 'Z')
