@@ -5,7 +5,7 @@
 ** Login   <toozs-_c@epitech.net>
 ** 
 ** Started on  Wed Dec 10 17:51:02 2014 cristopher toozs-hobson
-** Last update Sun Dec 21 20:09:58 2014 cristopher toozs-hobson
+** Last update Sun Dec 21 20:35:19 2014 cristopher toozs-hobson
 */
 
 #include <stdlib.h>
@@ -63,9 +63,6 @@ int		manage_events(t_strct *strct)
 
 int		wolf(t_strct *s)
 {
-  s->pl.a = 90;
-  draw_walls(s, s->pl.tab);
-  mlx_put_image_to_window(s->d.mlx_pt, s->d.win_pt, s->d.img_pt, 0, 0);
   manage_events(s);
   mlx_hook(s->d.win_pt, 2, 3, &manage_key, (void *)(s));
   mlx_loop(s->d.mlx_pt);
@@ -83,7 +80,12 @@ int		main(int ac, char **av)
       if ((s.pl.tab = maps(av, &s)) == NULL)
 	return (0);
       else
-	wolf(&s);
+	{
+	  s.pl.a = 90;
+	  draw_walls(&s, s.pl.tab);
+	  mlx_put_image_to_window(s.d.mlx_pt, s.d.win_pt, s.d.img_pt, 0, 0);
+	  wolf(&s);
+	}
     }
   else
     my_putstr("No map in parameters\n");
