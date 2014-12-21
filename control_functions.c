@@ -5,7 +5,7 @@
 ** Login   <toozs-_c@epitech.net>
 ** 
 ** Started on  Sat Dec 20 14:56:55 2014 cristopher toozs-hobson
-** Last update Sun Dec 21 19:04:01 2014 cristopher toozs-hobson
+** Last update Sun Dec 21 20:41:06 2014 cristopher toozs-hobson
 */
 
 #include <math.h>
