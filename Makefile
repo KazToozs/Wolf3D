@@ -5,7 +5,7 @@
 ## Login   <toozs-_c@epitech.net>
 ## 
 ## Started on  Wed Oct 29 15:09:44 2014 cristopher toozs-hobson
-## Last update Sun Dec 21 18:25:56 2014 cristopher toozs-hobson
+## Last update Sun Dec 21 21:53:00 2014 cristopher toozs-hobson
 ##
 
 SRC	=	main.c \
@@ -27,7 +27,7 @@ COMP	=	$(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(COMP)
-	$(CC) -W -Wall -g3 -o $(NAME) $(SRC) -L./sources/include/ -lmy -lm -L/usr/lib64/X11 -lmlx -lXext -lX11
+	$(CC) -W -Wall -o $(NAME) $(SRC) -L./sources/include/ -lmy -lm -L/usr/lib64/X11 -lmlx -lXext -lX11
 
 clean: 
 	rm -f $(COMP)
