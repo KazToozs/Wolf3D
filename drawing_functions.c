@@ -5,7 +5,7 @@
 ** Login   <toozs-_c@epitech.net>
 ** 
 ** Started on  Thu Dec 11 10:29:51 2014 cristopher toozs-hobson
-** Last update Sat Dec 20 21:18:57 2014 cristopher toozs-hobson
+** Last update Sun Dec 21 20:23:38 2014 cristopher toozs-hobson
 */
 
 #include "mlx.h"
@@ -66,18 +66,18 @@ void		draw_walls(t_strct *strct, int **tab)
 {
   int		column;
   double	half_wall;
-  int		w;
-  int		n;
-  int		i;
+  int		middle;
+  int		bottom;
+  int		top;
 
   column = 0;
-  w = strct->pic.img_y / 2;
+  middle = strct->pic.img_y / 2;
   while (column < strct->pic.img_x)
     {
       half_wall = set_values(strct, column, tab);
-      n = (w + (int)half_wall);
-      i = (w - (int)half_wall);
-      draw_column(column, strct, i, n);
+      bottom = (middle + (int)half_wall);
+      top = (middle - (int)half_wall);
+      draw_column(column, strct, top, bottom);
       column++;
     }
 }
